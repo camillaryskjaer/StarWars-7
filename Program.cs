@@ -14,11 +14,14 @@ namespace Starwars
             List<Planet> planets = LoadData();
             NameComparer nameComparer = new NameComparer();
             //Opgave 1
+            
+            //Måske du også skulle have brugt ToLower... hvis en havde kommet til at angive planeten med lille begyndelsesbogstav
             var planets1 = from name in planets
                            where name.Name.StartsWith("M")
                            select name.Name;
 
             //Opgave 2
+            //Hvad hvis Y er med stort?
             var planets2 = from name in planets
                            where name.Name.Contains("y")
                            select name.Name;
@@ -34,6 +37,7 @@ namespace Starwars
                            select name.Name;
 
             //Opgave 5
+            //Orderby bør ligge til sidst, som ved SQL
             var planets5 = from name in planets
                            orderby name.RotationPeriod
                            where name.RotationPeriod > 40
@@ -52,6 +56,7 @@ namespace Starwars
                            select name.Name;
 
             //Opgave 8  Virker men måske ikke korrekt
+            //Hvorfor ikke bruge en && ?
             var planets8 = from name in planets
                            orderby name.Name
                            where name.RotationPeriod < 30 || name.SurfaceWater > 50
